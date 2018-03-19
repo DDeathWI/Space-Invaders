@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7225928703dbf8e40900b43288c93904
+guid: b9db04d314c218248bb9eb3dd320521b
 timeCreated: 1521478456
 licenseType: Free
 TextureImporter:
@@ -63,6 +63,73 @@ TextureImporter:
     21300112: invaders_56
     21300114: invaders_57
     21300116: invaders_58
+    21300118: Player_0
+    21300120: Player_1
+    21300122: Player_2
+    21300124: Player_3
+    21300126: Player_4
+    21300128: Player_5
+    21300130: Player_6
+    21300132: Player_7
+    21300134: Player_8
+    21300136: Player_9
+    21300138: Player_10
+    21300140: Player_11
+    21300142: Player_12
+    21300144: Player_13
+    21300146: Player_14
+    21300148: Player_15
+    21300150: Player_16
+    21300152: Player_17
+    21300154: Player_18
+    21300156: Player_19
+    21300158: Player_20
+    21300160: Player_21
+    21300162: Player_22
+    21300164: Player_23
+    21300166: Player_24
+    21300168: Player_25
+    21300170: Player_26
+    21300172: Player_27
+    21300174: Player_28
+    21300176: Player_29
+    21300178: Player_30
+    21300180: Player_31
+    21300182: Player_32
+    21300184: Player_33
+    21300186: Player_34
+    21300188: Player_35
+    21300190: Player_36
+    21300192: Player_37
+    21300194: Player_38
+    21300196: Player_39
+    21300198: Player_40
+    21300200: Player_41
+    21300202: Player_42
+    21300204: Player_43
+    21300206: Player_44
+    21300208: Player_45
+    21300210: Player_46
+    21300212: Player_47
+    21300214: Player_48
+    21300216: Player_49
+    21300218: Player_50
+    21300220: Player_51
+    21300222: Player_52
+    21300224: Player_53
+    21300226: Player_54
+    21300228: Player_55
+    21300230: Player_56
+    21300232: Player_57
+    21300234: Player_58
+    21300236: Player_59
+    21300238: Player_60
+    21300240: Player_61
+    21300242: Player_62
+    21300244: Player_63
+    21300246: Player_64
+    21300248: Player_65
+    21300250: Player_66
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -105,7 +172,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -149,7 +216,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: invaders_0
+      name: Player_0
       rect:
         serializedVersion: 2
         x: 19
@@ -163,7 +230,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_1
+      name: Player_1
       rect:
         serializedVersion: 2
         x: 165
@@ -177,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_2
+      name: Player_2
       rect:
         serializedVersion: 2
         x: 312
@@ -191,7 +258,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_3
+      name: Player_3
       rect:
         serializedVersion: 2
         x: 428
@@ -205,7 +272,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_4
+      name: Player_4
       rect:
         serializedVersion: 2
         x: 19
@@ -219,7 +286,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_5
+      name: Player_5
       rect:
         serializedVersion: 2
         x: 160
@@ -233,7 +300,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_6
+      name: Player_6
       rect:
         serializedVersion: 2
         x: 300
@@ -247,7 +314,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_7
+      name: Player_7
       rect:
         serializedVersion: 2
         x: 421
@@ -261,7 +328,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_8
+      name: Player_8
       rect:
         serializedVersion: 2
         x: 19
@@ -275,7 +342,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_9
+      name: Player_9
       rect:
         serializedVersion: 2
         x: 110
@@ -289,7 +356,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_10
+      name: Player_10
       rect:
         serializedVersion: 2
         x: 200
@@ -303,7 +370,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_11
+      name: Player_11
       rect:
         serializedVersion: 2
         x: 311
@@ -317,7 +384,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_12
+      name: Player_12
       rect:
         serializedVersion: 2
         x: 417
@@ -331,7 +398,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_13
+      name: Player_13
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 425
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_14
       rect:
         serializedVersion: 2
         x: 492
@@ -345,7 +426,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_14
+      name: Player_15
       rect:
         serializedVersion: 2
         x: 19
@@ -359,7 +440,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_15
+      name: Player_16
       rect:
         serializedVersion: 2
         x: 145
@@ -373,7 +454,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_16
+      name: Player_17
       rect:
         serializedVersion: 2
         x: 271
@@ -387,7 +468,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_17
+      name: Player_18
       rect:
         serializedVersion: 2
         x: 377
@@ -401,7 +482,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_18
+      name: Player_19
       rect:
         serializedVersion: 2
         x: 487
@@ -415,7 +496,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_19
+      name: Player_20
       rect:
         serializedVersion: 2
         x: 19
@@ -429,7 +510,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_20
+      name: Player_21
       rect:
         serializedVersion: 2
         x: 120
@@ -443,7 +524,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_21
+      name: Player_22
       rect:
         serializedVersion: 2
         x: 236
@@ -457,7 +538,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_22
+      name: Player_23
       rect:
         serializedVersion: 2
         x: 347
@@ -471,7 +552,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_23
+      name: Player_24
       rect:
         serializedVersion: 2
         x: 456
@@ -485,7 +566,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_24
+      name: Player_25
       rect:
         serializedVersion: 2
         x: 467
@@ -499,7 +580,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_25
+      name: Player_26
       rect:
         serializedVersion: 2
         x: 480
@@ -513,7 +594,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_26
+      name: Player_27
       rect:
         serializedVersion: 2
         x: 492
@@ -527,7 +608,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_27
+      name: Player_28
       rect:
         serializedVersion: 2
         x: 505
@@ -541,7 +622,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_28
+      name: Player_29
       rect:
         serializedVersion: 2
         x: 518
@@ -555,7 +636,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_29
+      name: Player_30
       rect:
         serializedVersion: 2
         x: 531
@@ -569,7 +650,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_30
+      name: Player_31
       rect:
         serializedVersion: 2
         x: 543
@@ -583,7 +664,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_31
+      name: Player_32
       rect:
         serializedVersion: 2
         x: 456
@@ -597,7 +678,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_32
+      name: Player_33
       rect:
         serializedVersion: 2
         x: 481
@@ -611,7 +692,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_33
+      name: Player_34
       rect:
         serializedVersion: 2
         x: 506
@@ -625,7 +706,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_34
+      name: Player_35
       rect:
         serializedVersion: 2
         x: 531
@@ -639,7 +720,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_35
+      name: Player_36
       rect:
         serializedVersion: 2
         x: 456
@@ -653,7 +734,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_36
+      name: Player_37
       rect:
         serializedVersion: 2
         x: 475
@@ -667,7 +748,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_37
+      name: Player_38
       rect:
         serializedVersion: 2
         x: 495
@@ -681,7 +762,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_38
+      name: Player_39
       rect:
         serializedVersion: 2
         x: 515
@@ -695,7 +776,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_39
+      name: Player_40
       rect:
         serializedVersion: 2
         x: 535
@@ -709,7 +790,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_40
+      name: Player_41
       rect:
         serializedVersion: 2
         x: 20
@@ -723,7 +804,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_41
+      name: Player_42
       rect:
         serializedVersion: 2
         x: 150
@@ -737,7 +818,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_42
+      name: Player_43
       rect:
         serializedVersion: 2
         x: 274
@@ -751,7 +832,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_43
+      name: Player_44
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 58
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_45
       rect:
         serializedVersion: 2
         x: 385
@@ -765,13 +860,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_44
+      name: Player_46
       rect:
         serializedVersion: 2
-        x: 437
-        y: 51
+        x: 410
+        y: 70
         width: 18
-        height: 8
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -779,7 +874,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_45
+      name: Player_47
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 58
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_48
       rect:
         serializedVersion: 2
         x: 467
@@ -793,7 +902,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_46
+      name: Player_49
       rect:
         serializedVersion: 2
         x: 476
@@ -807,7 +916,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_47
+      name: Player_50
       rect:
         serializedVersion: 2
         x: 485
@@ -821,7 +930,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_48
+      name: Player_51
       rect:
         serializedVersion: 2
         x: 495
@@ -835,7 +944,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_49
+      name: Player_52
       rect:
         serializedVersion: 2
         x: 507
@@ -849,7 +958,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_50
+      name: Player_53
       rect:
         serializedVersion: 2
         x: 522
@@ -863,7 +972,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_51
+      name: Player_54
       rect:
         serializedVersion: 2
         x: 534
@@ -877,7 +986,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_52
+      name: Player_55
       rect:
         serializedVersion: 2
         x: 544
@@ -891,13 +1000,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_53
+      name: Player_56
       rect:
         serializedVersion: 2
-        x: 241
-        y: 36
-        width: 8
-        height: 10
+        x: 248
+        y: 24
+        width: 67
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -905,27 +1014,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_54
+      name: Player_57
       rect:
         serializedVersion: 2
-        x: 385
-        y: 30
-        width: 18
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: invaders_55
-      rect:
-        serializedVersion: 2
-        x: 411
-        y: 30
+        x: 359
+        y: 51
         width: 17
-        height: 16
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -933,7 +1028,49 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_56
+      name: Player_58
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 28
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_59
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 28
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_60
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 51
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_61
       rect:
         serializedVersion: 2
         x: 478
@@ -947,7 +1084,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_57
+      name: Player_62
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 36
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_63
       rect:
         serializedVersion: 2
         x: 316
@@ -961,7 +1112,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: invaders_58
+      name: Player_64
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 30
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_65
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 30
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player_66
       rect:
         serializedVersion: 2
         x: 338
@@ -976,7 +1155,7 @@ TextureImporter:
       tessellationDetail: 0
     outline: []
     physicsShape: []
-  spritePackingTag: Sprites
+  spritePackingTag: Player
   userData: 
   assetBundleName: 
   assetBundleVariant: 

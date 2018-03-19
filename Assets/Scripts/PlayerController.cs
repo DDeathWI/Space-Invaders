@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
-    private float movement_speed = 0.1f;
+    private float movement_speed = 3f;
 
     [SerializeField]
     private GameObject projectile_prefab;
@@ -11,13 +11,12 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Transform projectile_start_position;
 
-    // Use this for initialization
-    void Start () {
-        
-    }
-	
-	// Update is called once per frame
-	private void Update () {
+
+    // Update is called once per frame
+    private void Update () {
+        if (GameController.singleton.GamePaused)
+            return;
+
         Move();
 
         Shooting();
@@ -26,13 +25,13 @@ public class PlayerController : MonoBehaviour {
     private void LateUpdate()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, GameController.singleton.leftBorder, GameController.singleton.rightBorder), transform.position.y);
-
     }
 
     /// <summary>
     /// Player Move
     /// </summary>
     private void Move() {
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(new Vector2(movement_speed, 0));
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-
     /// <summary>
     /// Player Shooting
     /// </summary>
@@ -51,9 +49,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject projectile = Instantiate(projectile_prefab, projectile_start_position, false);
-
-            Destroy(projectile, 3); 
+            GameObject projectile = Instantiate(projectile_prefab, projectile_start_position.position, Quaternion.identity);
         }
     }
+
+    
 }
