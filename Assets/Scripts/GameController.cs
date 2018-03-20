@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public static GameController singleton;
-    
+
+    public bool GamePaused;
+
+    public bool GameOver;
+
     public float leftBorder;
     public float rightBorder;
     public float topBorder;
     public float bottomBorder;
-
-    public float spawnEnemyStartPosition;
-
-    public bool GamePaused;
 
     public int PauseTime = 3;
 
@@ -23,28 +23,52 @@ public class GameController : MonoBehaviour {
 
     public GameObject PauseTimerLabel;
 
+    public Text ScoreTxt;
+
+    public Text LifeTxt;
+
+
+    public GameObject EndPanel;
+
+    private int Score;
+
+
     private void Awake()
     {
         if (singleton == null)
         {
             singleton = this;
 
+            PauseTime = 3;
+            GameOver = false;
             leftBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).x;
             rightBorder = Camera.main.ViewportToWorldPoint(new Vector2(1, 0)).x;
             topBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
             bottomBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).y;
 
+            Debug.Log(leftBorder +" "+ GamePaused);
+
             SpawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.04f));
 
             Respawn();
         }
+
     }
 
-    public void Respawn()
+    private void Respawn()
     {
+        Score = 0;
+
         Instantiate(PlayerPrefab, SpawnPosition, Quaternion.identity);
         StartCoroutine(Pause(PauseTime));   
     }
+
+    public void ReAppear(Transform _transform)
+    {
+        _transform.position = SpawnPosition;
+        StartCoroutine(Pause(PauseTime));
+    }
+
 
     private IEnumerator Pause(int _time)
     {
@@ -55,35 +79,18 @@ public class GameController : MonoBehaviour {
         PauseTimerLabel.SetActive(false);
     }
 
+    public void SetLife(int life)
+    {
+        LifeTxt.text = "Life:" + life;
+    }
+
+    public void AddScore(int score)
+    {
+        Score += score;
+        ScoreTxt.text = "Score:" + Score;
+    }
+
 
 }
 
-/*
-public class GameEvents
-{
-    public delegate void GameOperation();
 
-    public enum Actions { Pause, InGame };
-
-    //Event gameEvent;
-
-    public Dictionary<Actions, GameOperation> dictionary;
-
-    public GameEvents(){
-        dictionary = new Dictionary<Actions, GameOperation>();
-    }
-
-    public void AddEvent(Actions action, GameOperation operation)
-    {
-        dictionary.Add(action, operation);
-    }
-
-    public void EventHappens(Actions action)
-    {
-        if (dictionary[action] != null)
-        {
-            dictionary[action]();
-        }
-    }
-}
-*/

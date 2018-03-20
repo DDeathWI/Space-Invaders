@@ -3,6 +3,9 @@
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
+    private int PlayerLife = 3;
+
+    [SerializeField]
     private float movement_speed = 3f;
 
     [SerializeField]
@@ -11,11 +14,20 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Transform projectile_start_position;
 
+    private Rigidbody2D body;
+
+    private void Awake()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     private void Update () {
         if (GameController.singleton.GamePaused)
+        {
+            body.velocity = new Vector2(0, 0);
             return;
+        }
 
         Move();
 
@@ -34,11 +46,15 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(new Vector2(movement_speed, 0));
+            body.velocity = new Vector2(movement_speed * Time.deltaTime, 0);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(new Vector2(-movement_speed, 0));
+            body.velocity = new Vector2(-movement_speed * Time.deltaTime, 0);
+        }
+        else
+        {
+            body.velocity = new Vector2(0, 0);
         }
     }
 
@@ -53,5 +69,26 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Damaged();
+    }
+
+    private void Damaged()
+    {
+        PlayerLife--;
+
+        if (PlayerLife <= 0)
+        {
+            //GameOver
+            GameController.singleton.GamePaused = true;
+            GameController.singleton.EndPanel.SetActive(true);
+
+            Destroy(gameObject);
+            return;
+        }
+
+        GameController.singleton.SetLife(PlayerLife);
+        GameController.singleton.ReAppear(transform);
+    }
 }
