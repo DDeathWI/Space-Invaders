@@ -51,6 +51,8 @@ public class EnemyController : MonoBehaviour {
 
     void Start() {
         MoveRight = true;
+
+        move_accelereation = 0.01f;
         moveObserver = new EnemyMoveObserver();
 
         listEnemies = new List<Transform>();

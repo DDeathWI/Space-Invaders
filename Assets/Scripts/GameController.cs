@@ -38,15 +38,14 @@ public class GameController : MonoBehaviour {
         if (singleton == null)
         {
             singleton = this;
-
+             
+            
             PauseTime = 3;
             GameOver = false;
             leftBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).x;
             rightBorder = Camera.main.ViewportToWorldPoint(new Vector2(1, 0)).x;
             topBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
             bottomBorder = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).y;
-
-            Debug.Log(leftBorder +" "+ GamePaused);
 
             SpawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.04f));
 
