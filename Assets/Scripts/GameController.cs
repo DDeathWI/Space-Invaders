@@ -33,8 +33,9 @@ public class GameController : MonoBehaviour {
     private int Score;
 
 
-    private void Awake()
+private void Awake()
     {
+     
         if (singleton == null)
         {
             singleton = this;
