@@ -1,38 +1,27 @@
-﻿using UnityEngine;
+﻿public class Normal_Enemy : Enemy {
 
-public class Normal_Enemy : Enemy {
+    public DetectEnemyEdgeHit EnemyMoveObserver;
 
-    [SerializeField]
-    protected float DownSpeed;
-
-    protected virtual void Start()
-    {
-        EnemyController.moveObserver.AddEvent(EnemyMoveObserver.Destionation.Right, ChangeDestination);
-
-
-    }
+    public DetectEnemyEdgeHit.Operation OnHitEdge;
 
     protected virtual void LateUpdate()
     {
-        //
+        // Hit Right Edge
         if (transform.position.x + Collider2D.size.x / 2 >= GameController.singleton.rightBorder - 0.2f)
         {
             //false
-
-            EnemyController.moveObserver.EventHappens(EnemyMoveObserver.Destionation.Right, false, DownSpeed);
-            EnemyController.moveObserver.AddEvent(EnemyMoveObserver.Destionation.Left, ChangeDestination);
+            EnemyMoveObserver.EventHappens(DetectEnemyEdgeHit.Edge.Right);
+            EnemyMoveObserver.AddEvent(DetectEnemyEdgeHit.Edge.Left, OnHitEdge);
         }
+        
+        // Hit Left Edge
         else if (transform.position.x - Collider2D.size.x / 2 <= GameController.singleton.leftBorder + 0.2f)
         {
             //true
-            EnemyController.moveObserver.EventHappens(EnemyMoveObserver.Destionation.Left, true, DownSpeed);
-            EnemyController.moveObserver.AddEvent(EnemyMoveObserver.Destionation.Right, ChangeDestination);
+            EnemyMoveObserver.EventHappens(DetectEnemyEdgeHit.Edge.Left);
+            EnemyMoveObserver.AddEvent(DetectEnemyEdgeHit.Edge.Right, OnHitEdge);
         }
     }
 
-    protected void ChangeDestination(bool value, float _downSpeed)
-    {
-        EnemyController.HitScreenEdge(value, _downSpeed);
-    }
 
 }

@@ -4,11 +4,6 @@ public class EnemyMother : Shooting_Enemy {
 
     public float moveSpeed;
 
-    protected override void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (!GameController.singleton.GamePaused)

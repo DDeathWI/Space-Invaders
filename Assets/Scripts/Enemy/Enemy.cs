@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour {
     protected BoxCollider2D Collider2D;
     
     protected SpriteRenderer spriteRenderer;
-
+    
     protected virtual void Awake()
     {
         PlayerProjectile = LayerMask.GetMask("PlayerProjectile");
@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour {
             GameController.singleton.EndPanel.SetActive(true);
             GameController.singleton.GameOver = true;
         }
+
     }
 
 

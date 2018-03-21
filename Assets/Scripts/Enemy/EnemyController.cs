@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
-    public static EnemyMoveObserver moveObserver;
+    // Detect When Main Enemy Block Hit Screen Edge
+    public DetectEnemyEdgeHit hit;
 
+    // Need change with use Observer
     public static List<Transform> listEnemies; 
 
-    private static bool MoveRight;
+    [SerializeField]
+    private bool MoveRight;
 
-    private static float move_accelereation = 0.01f;
-
-    private static float move_down = 0;
+    [SerializeField]
+    private float move_accelereation = 0.01f;
 
     [SerializeField]
     private GameObject enemy_normal_prefab;
@@ -26,13 +28,8 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     private float move_speed;
 
-    private Vector2 enemy_normal_size;
-    private Vector3 SpawnPoint;
-
-    private Vector3 LeftMotherSpawnPoints;
-    private Vector3 RightMotherSpawnPoints;
-
-    private Vector2 space;
+    [SerializeField]
+    protected float DownSpeed;
 
     [SerializeField]
     private List<int> ColumnShootingEnemies;
@@ -49,13 +46,23 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     private int motherBoadChance = 40;
 
-    void Start() {
-        MoveRight = true;
+    private Coroutine moveCoroutine;
+    private Coroutine motherBoardSpawn;
 
-        move_accelereation = 0.01f;
-        moveObserver = new EnemyMoveObserver();
+    private Vector2 enemy_normal_size;
+    private Vector3 SpawnPoint;
 
+    private Vector3 LeftMotherSpawnPoints;
+    private Vector3 RightMotherSpawnPoints;
+
+    private Vector2 space;
+
+
+    // Initiali2ate Values and Run Coroutines 
+    private void Start() {
+        hit = new DetectEnemyEdgeHit();
         listEnemies = new List<Transform>();
+
         SpawnPoint = Camera.main.ViewportToWorldPoint(new Vector2(.5f, .8f));
 
         enemy_normal_size = enemy_normal_prefab.GetComponent<BoxCollider2D>().size;
@@ -70,12 +77,12 @@ public class EnemyController : MonoBehaviour {
         RightMotherSpawnPoints = new Vector3(RightMotherSpawnPoints.x, RightMotherSpawnPoints.y, 0);
 
         Spawn();
-        StartCoroutine(Move());
-        StartCoroutine(MotherSpawn());
-
+        moveCoroutine = StartCoroutine(Move());
+        motherBoardSpawn = StartCoroutine(MotherSpawn());
     }
 
-    void Spawn()
+    // Main Enemy Block Spawn 
+    private void Spawn()
     {
         for (int height = 0; height > -6; height--)
         {
@@ -106,6 +113,19 @@ public class EnemyController : MonoBehaviour {
                     invader = Instantiate(enemy_normal_prefab, SpawnPoint + new Vector3(posX, posY, 0), Quaternion.identity).transform;
                 }
 
+                invader.GetComponent<Normal_Enemy>().EnemyMoveObserver = hit;
+
+                invader.GetComponent<Normal_Enemy>().OnHitEdge += HitScreenEdge;
+
+                if (MoveRight)
+                {
+                    hit.AddEvent(DetectEnemyEdgeHit.Edge.Right, HitScreenEdge);
+                }
+                else
+                {
+                    hit.AddEvent(DetectEnemyEdgeHit.Edge.Left, HitScreenEdge);
+                }
+
                 listEnemies.Add(invader);
 
                 invader.parent = transform;
@@ -113,7 +133,8 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    IEnumerator Move()
+    // Main Eney Block Move
+    private IEnumerator Move()
     {
         while (true)
         {
@@ -121,13 +142,12 @@ public class EnemyController : MonoBehaviour {
             {
                 if (MoveRight)
                 {
-                    transform.Translate(new Vector2(move_speed, move_down));
+                    transform.Translate(new Vector2(move_speed, 0));
                 }
                 else
                 {
-                    transform.Translate(new Vector2(-move_speed, move_down));
+                    transform.Translate(new Vector2(-move_speed, 0));
                 }
-                move_down = 0;
             }
 
             float resultSpeedDelay = moveTime - move_accelereation;
@@ -137,15 +157,16 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public static void HitScreenEdge(bool _moveRight, float _downSpeed)
+    // Action When ScreenEdgeHit
+    private void HitScreenEdge()
     {
-
-        MoveRight = _moveRight;
+        MoveRight = !MoveRight;
         move_accelereation += 0.05f;
-        move_down = -_downSpeed;
+        transform.Translate(new Vector2(0, -DownSpeed));
     }
 
-    IEnumerator MotherSpawn()
+    // Moother BoadSpawn 
+    private IEnumerator MotherSpawn()
     {
         while (true)
         {
@@ -182,12 +203,14 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-
+    // Check if GameEnd
+    // Need Change with use Observer
     private void Update()
     {
         if (GameController.singleton.GameOver)
         {
-            Destroy(gameObject);
+            StopCoroutine(moveCoroutine);
+            StopCoroutine(motherBoardSpawn);
         }
     }
 }

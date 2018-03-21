@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 
-public class EnemyMoveObserver
+public class DetectEnemyEdgeHit
 {
-    public delegate void Operation(bool value, float downSpeed);
+    public delegate void Operation();
 
-    public enum Destionation { Right, Left };
+    public enum Edge { Right, Left };
 
     //Event gameEvent;
 
-    public Dictionary<Destionation, List<Operation>> dictionary;
+    public Dictionary<Edge, List<Operation>> dictionary;
 
-    public EnemyMoveObserver(){
-        dictionary = new Dictionary<Destionation, List<Operation>>
+    public DetectEnemyEdgeHit(){
+        dictionary = new Dictionary<Edge, List<Operation>>
         {
-            { Destionation.Left, new List<Operation>() },
-            { Destionation.Right, new List<Operation>() }
+            { Edge.Left, new List<Operation>() },
+            { Edge.Right, new List<Operation>() }
         };
     }
 
-    public void AddEvent(Destionation action, Operation operation)
+    public void AddEvent(Edge action, Operation operation)
     {
         if (dictionary[action] == null)
         {
@@ -30,11 +30,11 @@ public class EnemyMoveObserver
         }
     }
 
-    public void EventHappens(Destionation action, bool m_Right, float downSpeed)
+    public void EventHappens(Edge action)
     {
         if (dictionary[action].Count > 0)
         {
-            dictionary[action][0](m_Right, downSpeed);
+            dictionary[action][0]();
             dictionary[action].Clear();
         }
     }

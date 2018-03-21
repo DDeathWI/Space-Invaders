@@ -6,8 +6,10 @@ public class GameController : MonoBehaviour {
 
     public static GameController singleton;
 
+    //Need Change with use Observer
     public bool GamePaused;
 
+    //Need Change with use Observer
     public bool GameOver;
 
     public float leftBorder;
@@ -27,19 +29,15 @@ public class GameController : MonoBehaviour {
 
     public Text LifeTxt;
 
-
     public GameObject EndPanel;
 
     private int Score;
 
-
 private void Awake()
     {
-     
         if (singleton == null)
         {
             singleton = this;
-             
             
             PauseTime = 3;
             GameOver = false;

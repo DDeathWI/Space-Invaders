@@ -991,6 +991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ab5a25905cf94ca4a3dedb0cfb131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveRight: 0
+  move_accelereation: 0.01
   enemy_normal_prefab: {fileID: 1487295420669638, guid: 2b51a0aa665e4ad4984c620404e1b3aa,
     type: 2}
   enemy_shooting_prefab: {fileID: 1235948253871694, guid: 25ea5df6f7ff5074387540b48c0fc981,
@@ -998,6 +1000,7 @@ MonoBehaviour:
   enemy_mother_prefab: {fileID: 1422124339575758, guid: 07fb9fa4ff365e74fb4b0dd137709e0a,
     type: 2}
   move_speed: 0.2
+  DownSpeed: 0.3
   ColumnShootingEnemies: 0200000004000000
   RowShootingEnemies: 0100000006000000
   moveTime: 0.5
