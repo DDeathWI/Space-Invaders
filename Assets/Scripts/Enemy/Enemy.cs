@@ -10,7 +10,11 @@ public class Enemy : MonoBehaviour {
     protected BoxCollider2D Collider2D;
     
     protected SpriteRenderer spriteRenderer;
-    
+
+    public delegate void RemoveEnemy(Transform t);
+
+    public event RemoveEnemy ObjectDestroyed;
+
     protected virtual void Awake()
     {
         PlayerProjectile = LayerMask.GetMask("PlayerProjectile");
@@ -20,37 +24,30 @@ public class Enemy : MonoBehaviour {
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        SetNotActive();
-
+        Killed();
+        Invoke("RemoveFromList", 2);
     }
 
-    protected void SetNotActive()
+    protected void RemoveFromList()
     {
-        spriteRenderer.enabled = false;
-        Collider2D.enabled = false;
+        // Event Happened
+        // Delete Enemy from EnemyList
+        ObjectDestroyed(transform);
+
+        //Destroy Enemy GameObject
+        Destroy(gameObject);
+    }
+
+
+    // Need To Change 
+    protected void Killed()
+    {
+        transform.parent = null;
+
         GameController.singleton.AddScore(int.Parse(scoreValue.text));
         scoreValue.gameObject.SetActive(true);
-
-        Destroy(gameObject, 2);
-        transform.parent = null;
+        spriteRenderer.enabled = false;
+        Collider2D.enabled = false;
     }
-
-    protected void OnDestroy()
-    {
-        EnemyController.listEnemies.Remove(transform);
-
-        if (EnemyController.listEnemies.Count == 0)
-        {
-            GameController.singleton.EndPanel.SetActive(true);
-            GameController.singleton.GameOver = true;
-        }
-
-    }
-
-
-
-
-
-
 
 }

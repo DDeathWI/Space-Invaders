@@ -13,22 +13,11 @@ public class EnemyMother : Shooting_Enemy {
 
     protected override void LateUpdate()
     {
-
-        if (moveSpeed > 0)
+        if (transform.position.x - Collider2D.size.x/2  > GameController.singleton.rightBorder ||
+            transform.position.x + Collider2D.size.x/2  < GameController.singleton.leftBorder)
         {
-            if (transform.position.x + Collider2D.size.x / 2 >= GameController.singleton.rightBorder + 0.2f)
-            {
-                //false
-                Destroy(gameObject);
-
-
-            }
-        }
-        else if (transform.position.x - Collider2D.size.x / 2 <= GameController.singleton.leftBorder - 0.2f)
-        {
-            //true
+            RemoveFromList();
             Destroy(gameObject);
         }
-
     }
 }

@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
 
-public class DetectEnemyEdgeHit
+public class ObserverDetectEnemyHittingScreenEdge
 {
     public delegate void Operation();
 
     public enum Edge { Right, Left };
 
-    //Event gameEvent;
-
     public Dictionary<Edge, List<Operation>> dictionary;
 
-    public DetectEnemyEdgeHit(){
+    public ObserverDetectEnemyHittingScreenEdge(){
         dictionary = new Dictionary<Edge, List<Operation>>
         {
             { Edge.Left, new List<Operation>() },

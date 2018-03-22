@@ -2,7 +2,6 @@
 
 public class Enemy_Projectile : MonoBehaviour
 {
-
     [SerializeField]
     private float speed = 0.1f;
 

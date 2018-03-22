@@ -5,10 +5,9 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     // Detect When Main Enemy Block Hit Screen Edge
-    public DetectEnemyEdgeHit hit;
+    public ObserverDetectEnemyHittingScreenEdge hit;
 
-    // Need change with use Observer
-    public static List<Transform> listEnemies; 
+    public List<Transform> ListEnemies = new List<Transform>();
 
     [SerializeField]
     private bool MoveRight;
@@ -57,11 +56,9 @@ public class EnemyController : MonoBehaviour {
 
     private Vector2 space;
 
-
     // Initiali2ate Values and Run Coroutines 
     private void Start() {
-        hit = new DetectEnemyEdgeHit();
-        listEnemies = new List<Transform>();
+        hit = new ObserverDetectEnemyHittingScreenEdge();
 
         SpawnPoint = Camera.main.ViewportToWorldPoint(new Vector2(.5f, .8f));
 
@@ -70,8 +67,13 @@ public class EnemyController : MonoBehaviour {
 
         SpawnPoint = new Vector3(SpawnPoint.x - 2.5f*(enemy_normal_size.x + space.x), SpawnPoint.y, 0);
 
-        LeftMotherSpawnPoints = Camera.main.ViewportToWorldPoint(new Vector2(0, .85f));
-        RightMotherSpawnPoints = Camera.main.ViewportToWorldPoint(new Vector2(1, .85f));
+        LeftMotherSpawnPoints = Camera.main.ViewportToWorldPoint(new Vector2(0, .85f))
+             - new Vector3(enemy_mother_prefab.GetComponent<BoxCollider2D>().size.x / 2,0,0);
+
+        RightMotherSpawnPoints = Camera.main.ViewportToWorldPoint(new Vector2(1, .85f))
+            + new Vector3(enemy_mother_prefab.GetComponent<BoxCollider2D>().size.x / 2, 0, 0); ;
+
+        Debug.Log(LeftMotherSpawnPoints);
 
         LeftMotherSpawnPoints = new Vector3(LeftMotherSpawnPoints.x, LeftMotherSpawnPoints.y, 0);
         RightMotherSpawnPoints = new Vector3(RightMotherSpawnPoints.x, RightMotherSpawnPoints.y, 0);
@@ -113,22 +115,27 @@ public class EnemyController : MonoBehaviour {
                     invader = Instantiate(enemy_normal_prefab, SpawnPoint + new Vector3(posX, posY, 0), Quaternion.identity).transform;
                 }
 
-                invader.GetComponent<Normal_Enemy>().EnemyMoveObserver = hit;
+                ListEnemies.Add(invader);
 
-                invader.GetComponent<Normal_Enemy>().OnHitEdge += HitScreenEdge;
+                invader.parent = transform;
+
+                Normal_Enemy enemyScript = invader.GetComponent<Normal_Enemy>();
+
+                enemyScript.EnemyMoveObserver = hit;
+                enemyScript.OnHitEdge += HitScreenEdge;
+
+                enemyScript.ObjectDestroyed += RemoveEnemy;
 
                 if (MoveRight)
                 {
-                    hit.AddEvent(DetectEnemyEdgeHit.Edge.Right, HitScreenEdge);
+                    hit.AddEvent(ObserverDetectEnemyHittingScreenEdge.Edge.Right, HitScreenEdge);
                 }
                 else
                 {
-                    hit.AddEvent(DetectEnemyEdgeHit.Edge.Left, HitScreenEdge);
+                    hit.AddEvent(ObserverDetectEnemyHittingScreenEdge.Edge.Left, HitScreenEdge);
                 }
 
-                listEnemies.Add(invader);
 
-                invader.parent = transform;
             }
         }
     }
@@ -183,34 +190,50 @@ public class EnemyController : MonoBehaviour {
                 if (respawnMother)
                 {
                     Transform invader;
+                    EnemyMother enemyScript;
 
                     int randomMove = Random.Range(0, 2);
 
                     if (randomMove == 0)
                     {
                         invader = Instantiate(enemy_mother_prefab, LeftMotherSpawnPoints, Quaternion.identity).transform;
-                        invader.GetComponent<EnemyMother>().moveSpeed = .1f;
+                        enemyScript = invader.GetComponent<EnemyMother>();
+                        enemyScript.moveSpeed = .1f;
                     }
                     else
                     {
                         invader = Instantiate(enemy_mother_prefab, RightMotherSpawnPoints, Quaternion.identity).transform;
-                        invader.GetComponent<EnemyMother>().moveSpeed = -.1f;
+                        enemyScript = invader.GetComponent<EnemyMother>();
+                        enemyScript.moveSpeed = -.1f;
                     }
 
-                    listEnemies.Add(invader);
+                    enemyScript.ObjectDestroyed += RemoveEnemy;
+
+                    ListEnemies.Add(invader);
                 }
             }
         }
     }
 
-    // Check if GameEnd
-    // Need Change with use Observer
-    private void Update()
+
+    // Need Some Changes with Game End ANd Pause
+    private void RemoveEnemy(Transform t)
     {
-        if (GameController.singleton.GameOver)
+        ListEnemies.Remove(t);
+
+
+        Debug.Log("Enemy Removed" + ListEnemies.Count);
+
+        if (ListEnemies.Count == 0)
         {
+            GameController.singleton.GameOver = true;
+
             StopCoroutine(moveCoroutine);
             StopCoroutine(motherBoardSpawn);
+
+            Debug.Log("Game Over");
+            GameController.singleton.GamePaused = true;
+            GameController.singleton.EndPanel.SetActive(true);
         }
     }
 }
